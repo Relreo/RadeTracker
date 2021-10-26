@@ -1,12 +1,11 @@
 <template>
     <v-row justify="center" align="center">
         <v-col cols="12" sm="8" md="6">
-            <v-card class="logo py-4 d-flex justify-center">
-                <NuxtLogo />
-                <VuetifyLogo />
+            <v-card class="logo py-2 d-flex justify-center">
+                <RadeLogo />
             </v-card>
             <v-card>
-                <v-card-title class="headline"> Welcome to the Rade Campaign Tracker </v-card-title>
+                <v-card-title class="headline justify-center"> Welcome to the Rade Campaign Tracker </v-card-title>
                 <v-card-text> </v-card-text>
                 <v-card-actions>
                     <v-spacer />

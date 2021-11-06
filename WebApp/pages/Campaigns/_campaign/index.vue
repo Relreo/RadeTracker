@@ -1,6 +1,6 @@
 /* eslint-disable vue/no-parsing-error */
 <template>
-    <v-row justify="center" align="center">
+    <v-row justify="space-around" align="center">
         <v-col cols="12">
             <PageTitle :title="$route.params.campaign" class="mb-6" />
         </v-col>

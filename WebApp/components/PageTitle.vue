@@ -1,6 +1,8 @@
 <template>
-    <v-card outlined tile class="elevation-0">
-        {{ title }}
+    <v-card tile class="transparent elevation-0 text-center">
+        <span class="text-h1">
+            {{ title }}
+        </span>
     </v-card>
 </template>
 

@@ -1,7 +1,8 @@
 <template>
     <v-app dark>
+        <v-app-bar :clipped-left="clipped" fixed app> </v-app-bar>
         <v-main>
-            <v-container fluid class="pa-8 fill-height">
+            <v-container class="pa-8">
                 <Nuxt />
             </v-container>
         </v-main>

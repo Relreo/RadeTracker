@@ -1,24 +1,31 @@
 <template>
     <div>
-        <PageTitle title="Campaigns" />
-        <v-row dense>
-            <v-col v-for="(campaign, i) in campaigns" :key="i" cols="12" sm="6" md="4" lg="2" class="pa-4">
-                <v-btn outlined block class="pa-4" height="200" @click="selectCampaign(campaign)">
+        <PageTitle title="Campaigns" class="mb-12" />
+        <v-row justify="space-around" align="center">
+            <v-col v-for="(campaign, i) in campaigns" :key="i" cols="auto">
+                <v-btn
+                    outlined
+                    color="blue"
+                    height="150"
+                    min-width="150"
+                    max-width="300"
+                    @click="selectCampaign(campaign)"
+                >
                     {{ campaign.name }}
                 </v-btn>
             </v-col>
         </v-row>
         <v-dialog v-model="model" width="800">
             <v-card>
-                <v-card-title>{{ selectedCampaign.name }}</v-card-title>
+                <v-card-title class="text-h2 mb-2">{{ selectedCampaign.name }}</v-card-title>
                 <v-card-text>
-                    <v-row align="center" class="mx-0">
+                    <v-row class="mx-auto text-subtitle-1">
                         <div>Pending Cases:</div>
                         <div class="ms-1">{{ selectedCampaign.pendingCases }}</div>
                     </v-row>
                 </v-card-text>
-                <v-card-actions>
-                    <v-btn outlined :to="'campaigns/' + selectedCampaign.id">Go to Campaign</v-btn>
+                <v-card-actions class="justify-center">
+                    <v-btn depressed outlined :to="'campaigns/' + selectedCampaign.id">Go to Campaign</v-btn>
                 </v-card-actions>
             </v-card>
         </v-dialog>
@@ -32,6 +39,7 @@ export default {
     components: {
         PageTitle,
     },
+    layout: 'data',
     data: () => ({
         model: false,
         selectedCampaign: {},

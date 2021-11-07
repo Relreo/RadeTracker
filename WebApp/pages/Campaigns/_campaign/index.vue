@@ -1,15 +1,18 @@
 /* eslint-disable vue/no-parsing-error */
 <template>
-    <v-row justify="space-around" align="center">
-        <v-col cols="12">
-            <PageTitle :title="$route.params.campaign" class="mb-6" />
-        </v-col>
-        <v-col v-for="(c, i) in cases" :key="i" cols="auto">
-            <v-btn outlined color="blue" height="150" min-width="150" max-width="300">
-                {{ c.name }}
-            </v-btn>
-        </v-col>
-    </v-row>
+    <div>
+        <PageTitle :title="$route.params.campaign" class="mb-6" />
+        <v-row>
+            <v-col v-for="(c, i) in cases" :key="i" cols="12" sm="6" md="3" lg="2">
+                <v-btn block outlined color="blue" height="150">
+                    {{ c.name }}
+                </v-btn>
+            </v-col>
+        </v-row>
+        <v-btn fab large dark bottom right fixed color="blue" class="mb-12 mr-8">
+            <v-icon dark> mdi-plus </v-icon>
+        </v-btn>
+    </div>
 </template>
 
 <script>

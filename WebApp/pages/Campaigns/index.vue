@@ -9,12 +9,35 @@
             </v-col>
         </v-row>
         <v-dialog v-model="model" width="800">
-            <v-card>
-                <v-card-title class="text-h2 mb-2">{{ selectedCampaign.name }}</v-card-title>
+            <v-card flat outlined width="100%" max-width="800" class="mx-auto">
                 <v-card-text>
-                    <v-row class="mx-auto text-subtitle-1">
-                        <div>Pending Cases:</div>
-                        <div class="ms-1">{{ selectedCampaign.pendingCases }}</div>
+                    <div class="text-overline mb-4 text-center">Campaign</div>
+                    <p class="text-h1 text-center">{{ selectedCampaign.name }}</p>
+                    <v-row>
+                        <v-col cols="12" sm="6">
+                            <v-card outlined height="100%" class="pa-4">
+                                <p class="overline text-right">Pending Cases</p>
+                                <p class="text-h5 text-right">{{ selectedCampaign.pendingCases }}</p>
+                            </v-card>
+                        </v-col>
+                        <v-col cols="12" sm="6">
+                            <v-card outlined height="100%" class="pa-4">
+                                <p class="overline">Asserted Patents</p>
+                                <p class="text-h5">{{ selectedCampaign.assertedPatents }}</p>
+                            </v-card>
+                        </v-col>
+                        <v-col cols="12" sm="6">
+                            <v-card outlined height="100%" class="pa-4">
+                                <p class="overline text-right">Patents Subject To IPR</p>
+                                <p class="text-h5 text-right">TO BE IMPLEMENTED</p>
+                            </v-card>
+                        </v-col>
+                        <v-col cols="12" sm="6">
+                            <v-card outlined height="100%" class="pa-4">
+                                <p class="overline">Money Spent</p>
+                                <p class="text-h5">$ {{ selectedCampaign.moneySpent }}</p>
+                            </v-card>
+                        </v-col>
                     </v-row>
                 </v-card-text>
                 <v-card-actions class="justify-center">
@@ -39,8 +62,8 @@ export default {
     data: () => ({
         model: false,
         selectedCampaign: {},
-
-        campaigns: [
+        campaigns: [],
+        dummyData: [
             {
                 id: 1,
                 name: 'Microsoft',
@@ -68,394 +91,13 @@ export default {
                 pendingCases: 1,
                 assertedPatents: 3,
                 moneySpent: 100000.69,
-            },
-            {
-                id: 1,
-                name: 'Microsoft',
-                pendingCases: 4,
-                assertedPatents: 20,
-                moneySpent: 69.32,
-            },
-            {
-                id: 2,
-                name: 'Apple',
-                pendingCases: 3,
-                assertedPatents: 50,
-                moneySpent: 10.4,
-            },
-            {
-                id: 3,
-                name: 'Jagex',
-                pendingCases: 2,
-                assertedPatents: 123,
-                moneySpent: 123.5,
-            },
-            {
-                id: 4,
-                name: 'Sony',
-                pendingCases: 1,
-                assertedPatents: 3,
-                moneySpent: 100000.69,
-            },
-            {
-                id: 1,
-                name: 'Microsoft',
-                pendingCases: 4,
-                assertedPatents: 20,
-                moneySpent: 69.32,
-            },
-            {
-                id: 2,
-                name: 'Apple',
-                pendingCases: 3,
-                assertedPatents: 50,
-                moneySpent: 10.4,
-            },
-            {
-                id: 3,
-                name: 'Jagex',
-                pendingCases: 2,
-                assertedPatents: 123,
-                moneySpent: 123.5,
-            },
-            {
-                id: 4,
-                name: 'Sony',
-                pendingCases: 1,
-                assertedPatents: 3,
-                moneySpent: 100000.69,
-            },
-            {
-                id: 3,
-                name: 'Jagex',
-                pendingCases: 2,
-                assertedPatents: 123,
-                moneySpent: 123.5,
-            },
-            {
-                id: 4,
-                name: 'Sony',
-                pendingCases: 1,
-                assertedPatents: 3,
-                moneySpent: 100000.69,
-            },
-            {
-                id: 3,
-                name: 'Jagex',
-                pendingCases: 2,
-                assertedPatents: 123,
-                moneySpent: 123.5,
-            },
-            {
-                id: 4,
-                name: 'Sony',
-                pendingCases: 1,
-                assertedPatents: 3,
-                moneySpent: 100000.69,
-            },
-            {
-                id: 3,
-                name: 'Jagex',
-                pendingCases: 2,
-                assertedPatents: 123,
-                moneySpent: 123.5,
-            },
-            {
-                id: 4,
-                name: 'Sony',
-                pendingCases: 1,
-                assertedPatents: 3,
-                moneySpent: 100000.69,
-            },
-            {
-                id: 3,
-                name: 'Jagex',
-                pendingCases: 2,
-                assertedPatents: 123,
-                moneySpent: 123.5,
-            },
-            {
-                id: 4,
-                name: 'Sony',
-                pendingCases: 1,
-                assertedPatents: 3,
-                moneySpent: 100000.69,
-            },
-            {
-                id: 3,
-                name: 'Jagex',
-                pendingCases: 2,
-                assertedPatents: 123,
-                moneySpent: 123.5,
-            },
-            {
-                id: 4,
-                name: 'Sony',
-                pendingCases: 1,
-                assertedPatents: 3,
-                moneySpent: 100000.69,
-            },
-            {
-                id: 3,
-                name: 'Jagex',
-                pendingCases: 2,
-                assertedPatents: 123,
-                moneySpent: 123.5,
-            },
-            {
-                id: 4,
-                name: 'Sony',
-                pendingCases: 1,
-                assertedPatents: 3,
-                moneySpent: 100000.69,
-            },
-            {
-                id: 3,
-                name: 'Jagex',
-                pendingCases: 2,
-                assertedPatents: 123,
-                moneySpent: 123.5,
-            },
-            {
-                id: 4,
-                name: 'Sony',
-                pendingCases: 1,
-                assertedPatents: 3,
-                moneySpent: 100000.69,
-            },
-            {
-                id: 3,
-                name: 'Jagex',
-                pendingCases: 2,
-                assertedPatents: 123,
-                moneySpent: 123.5,
-            },
-            {
-                id: 4,
-                name: 'Sony',
-                pendingCases: 1,
-                assertedPatents: 3,
-                moneySpent: 100000.69,
-            },
-            {
-                id: 3,
-                name: 'Jagex',
-                pendingCases: 2,
-                assertedPatents: 123,
-                moneySpent: 123.5,
-            },
-            {
-                id: 4,
-                name: 'Sony',
-                pendingCases: 1,
-                assertedPatents: 3,
-                moneySpent: 100000.69,
-            },
-            {
-                id: 3,
-                name: 'Jagex',
-                pendingCases: 2,
-                assertedPatents: 123,
-                moneySpent: 123.5,
-            },
-            {
-                id: 4,
-                name: 'Sony',
-                pendingCases: 1,
-                assertedPatents: 3,
-                moneySpent: 100000.69,
-            },
-            {
-                id: 3,
-                name: 'Jagex',
-                pendingCases: 2,
-                assertedPatents: 123,
-                moneySpent: 123.5,
-            },
-            {
-                id: 4,
-                name: 'Sony',
-                pendingCases: 1,
-                assertedPatents: 3,
-                moneySpent: 100000.69,
-            },
-            {
-                id: 3,
-                name: 'Jagex',
-                pendingCases: 2,
-                assertedPatents: 123,
-                moneySpent: 123.5,
-            },
-            {
-                id: 4,
-                name: 'Sony',
-                pendingCases: 1,
-                assertedPatents: 3,
-                moneySpent: 100000.69,
-            },
-            {
-                id: 3,
-                name: 'Jagex',
-                pendingCases: 2,
-                assertedPatents: 123,
-                moneySpent: 123.5,
-            },
-            {
-                id: 4,
-                name: 'Sony',
-                pendingCases: 1,
-                assertedPatents: 3,
-                moneySpent: 100000.69,
-            },
-            {
-                id: 3,
-                name: 'Jagex',
-                pendingCases: 2,
-                assertedPatents: 123,
-                moneySpent: 123.5,
-            },
-            {
-                id: 4,
-                name: 'Sony',
-                pendingCases: 1,
-                assertedPatents: 3,
-                moneySpent: 100000.69,
-            },
-            {
-                id: 3,
-                name: 'Jagex',
-                pendingCases: 2,
-                assertedPatents: 123,
-                moneySpent: 123.5,
-            },
-            {
-                id: 4,
-                name: 'Sony',
-                pendingCases: 1,
-                assertedPatents: 3,
-                moneySpent: 100000.69,
-            },
-            {
-                id: 3,
-                name: 'Jagex',
-                pendingCases: 2,
-                assertedPatents: 123,
-                moneySpent: 123.5,
-            },
-            {
-                id: 4,
-                name: 'Sony',
-                pendingCases: 1,
-                assertedPatents: 3,
-                moneySpent: 100000.69,
-            },
-            {
-                id: 3,
-                name: 'Jagex',
-                pendingCases: 2,
-                assertedPatents: 123,
-                moneySpent: 123.5,
-            },
-            {
-                id: 4,
-                name: 'Sony',
-                pendingCases: 1,
-                assertedPatents: 3,
-                moneySpent: 100000.69,
-            },
-            {
-                id: 1,
-                name: 'Microsoft',
-                pendingCases: 4,
-                assertedPatents: 20,
-                moneySpent: 69.32,
-            },
-            {
-                id: 2,
-                name: 'Apple',
-                pendingCases: 3,
-                assertedPatents: 50,
-                moneySpent: 10.4,
-            },
-            {
-                id: 1,
-                name: 'Microsoft',
-                pendingCases: 4,
-                assertedPatents: 20,
-                moneySpent: 69.32,
-            },
-            {
-                id: 2,
-                name: 'Apple',
-                pendingCases: 3,
-                assertedPatents: 50,
-                moneySpent: 10.4,
-            },
-            {
-                id: 1,
-                name: 'Microsoft',
-                pendingCases: 4,
-                assertedPatents: 20,
-                moneySpent: 69.32,
-            },
-            {
-                id: 2,
-                name: 'Apple',
-                pendingCases: 3,
-                assertedPatents: 50,
-                moneySpent: 10.4,
-            },
-            {
-                id: 1,
-                name: 'Microsoft',
-                pendingCases: 4,
-                assertedPatents: 20,
-                moneySpent: 69.32,
-            },
-            {
-                id: 2,
-                name: 'Apple',
-                pendingCases: 3,
-                assertedPatents: 50,
-                moneySpent: 10.4,
-            },
-            {
-                id: 1,
-                name: 'Microsoft',
-                pendingCases: 4,
-                assertedPatents: 20,
-                moneySpent: 69.32,
-            },
-            {
-                id: 2,
-                name: 'Apple',
-                pendingCases: 3,
-                assertedPatents: 50,
-                moneySpent: 10.4,
-            },
-            {
-                id: 1,
-                name: 'Microsoft',
-                pendingCases: 4,
-                assertedPatents: 20,
-                moneySpent: 69.32,
-            },
-            {
-                id: 2,
-                name: 'Apple',
-                pendingCases: 3,
-                assertedPatents: 50,
-                moneySpent: 10.4,
-            },
-            {
-                id: 1,
-                name: 'Microsoft',
-                pendingCases: 4,
-                assertedPatents: 20,
-                moneySpent: 69.32,
             },
         ],
     }),
+
+    fetch() {
+        for (const c of this.dummyData) this.campaigns.push(c)
+    },
 
     methods: {
         selectCampaign(campaign) {

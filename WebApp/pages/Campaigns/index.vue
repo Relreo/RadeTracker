@@ -1,3 +1,4 @@
+/* eslint-disable vue/no-parsing-error */
 <template>
     <div>
         <PageTitle title="Campaigns" class="mb-12" />
@@ -8,7 +9,7 @@
                 </v-btn>
             </v-col>
         </v-row>
-        <v-dialog v-model="model" width="800">
+        <v-dialog v-model="campaignOpened" width="800">
             <v-card flat outlined width="100%" max-width="800" class="mx-auto">
                 <v-card-text>
                     <div class="text-overline mb-4 text-center">Campaign</div>
@@ -45,7 +46,22 @@
                 </v-card-actions>
             </v-card>
         </v-dialog>
-        <v-btn fab large dark bottom right fixed color="blue" class="mb-12 mr-8">
+        <v-dialog v-model="createActive" width="500">
+            <v-form ref="createForm" v-model="valid" class="mx-auto pa-8">
+                <v-text-field
+                    v-model="createCampaignName"
+                    :counter="30"
+                    :rules="campaignNameRules"
+                    label="Enter Campaign Name"
+                    required
+                >
+                </v-text-field>
+                <v-btn block :disabled="!valid" color="success" class="mt-8" @click="createNewCampaign()">
+                    Create campaign
+                </v-btn>
+            </v-form>
+        </v-dialog>
+        <v-btn fab large dark bottom right fixed color="blue" class="mb-12 mr-8" @click="openCreateMenu()">
             <v-icon dark> mdi-plus </v-icon>
         </v-btn>
     </div>
@@ -60,7 +76,9 @@ export default {
     },
     layout: 'data',
     data: () => ({
-        model: false,
+        campaignOpened: false,
+        createActive: false,
+
         selectedCampaign: {},
         campaigns: [],
         dummyData: [
@@ -93,6 +111,15 @@ export default {
                 moneySpent: 100000.69,
             },
         ],
+
+        // INSERT OBJECTS AND RULES FOR CREATE FORM HERE
+        valid: true,
+        createCampaignName: '',
+
+        campaignNameRules: [
+            (v) => !!v || 'Name is required',
+            (v) => (v && v.length <= 30) || 'Name must be less than 30 characters',
+        ],
     }),
 
     fetch() {
@@ -102,7 +129,14 @@ export default {
     methods: {
         selectCampaign(campaign) {
             this.selectedCampaign = campaign
-            this.model = true
+            this.campaignOpened = true
+        },
+        openCreateMenu() {
+            this.createActive = true
+        },
+        createNewCampaign() {
+            // GRAB FORM DATA AND ADD TO THE ARRAY AND EVENTUALLY THE DATABASE
+            if (this.$refs.createForm.validate()) this.valid = true
         },
     },
 }

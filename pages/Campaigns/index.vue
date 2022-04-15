@@ -5,7 +5,7 @@
         <v-row>
             <v-col v-for="(campaign, i) in campaigns" :key="i" cols="12" sm="6" md="3" lg="2">
                 <v-btn block outlined color="blue" height="150" @click="selectCampaign(campaign)">
-                    {{ campaign.name }}
+                    {{ campaign.campaignName }}
                 </v-btn>
             </v-col>
         </v-row>
@@ -13,7 +13,7 @@
             <v-card flat outlined width="100%" max-width="800" class="mx-auto">
                 <v-card-text>
                     <div class="text-overline mb-4 text-center">Campaign</div>
-                    <p class="text-h1 text-center">{{ selectedCampaign.name }}</p>
+                    <p class="text-h1 text-center">{{ selectedCampaign.campaignName }}</p>
                     <v-row>
                         <v-col cols="12" sm="6">
                             <v-card outlined height="100%" class="pa-4">
@@ -30,7 +30,7 @@
                         <v-col cols="12" sm="6">
                             <v-card outlined height="100%" class="pa-4">
                                 <p class="overline text-right">Patents Subject To IPR</p>
-                                <p class="text-h5 text-right">TO BE IMPLEMENTED</p>
+                                <p class="text-h5 text-right">{{ selectedCampaign.IPR }}</p>
                             </v-card>
                         </v-col>
                         <v-col cols="12" sm="6">
@@ -42,7 +42,7 @@
                     </v-row>
                 </v-card-text>
                 <v-card-actions class="justify-center">
-                    <v-btn depressed outlined :to="'campaigns/' + selectedCampaign.id">Go to Campaign</v-btn>
+                    <v-btn depressed outlined :to="'campaigns/' + selectedCampaign.campaignID">Go to Campaign</v-btn>
                 </v-card-actions>
             </v-card>
         </v-dialog>
@@ -69,7 +69,16 @@
 
 <script>
 import PageTitle from '~/components/PageTitle.vue'
-
+class Campaign {
+    constructor(campaignName, campaignID) {
+        this.campaignName = campaignName
+        this.campaignID = campaignID
+        this.pendingCases = 0
+        this.assertedPatents = 0
+        this.moneySpent = 0.0
+        this.IPR = 0
+    }
+}
 export default {
     components: {
         PageTitle,
@@ -82,34 +91,10 @@ export default {
         selectedCampaign: {},
         campaigns: [],
         dummyData: [
-            {
-                id: 1,
-                name: 'Microsoft',
-                pendingCases: 4,
-                assertedPatents: 20,
-                moneySpent: 69.32,
-            },
-            {
-                id: 2,
-                name: 'Apple',
-                pendingCases: 3,
-                assertedPatents: 50,
-                moneySpent: 10.4,
-            },
-            {
-                id: 3,
-                name: 'Jagex',
-                pendingCases: 2,
-                assertedPatents: 123,
-                moneySpent: 123.5,
-            },
-            {
-                id: 4,
-                name: 'Sony',
-                pendingCases: 1,
-                assertedPatents: 3,
-                moneySpent: 100000.69,
-            },
+            new Campaign('Microsoft', 'eb0a882b0231'),
+            new Campaign('Apple', 'deffdf884d93'),
+            new Campaign('Jagex', '89c7fb6999eb'),
+            new Campaign('Valve', 'ecd48ac43c9c'),
         ],
 
         // INSERT OBJECTS AND RULES FOR CREATE FORM HERE
@@ -123,7 +108,13 @@ export default {
     }),
 
     fetch() {
-        // Get List of all Campaigns from Firebase and push them to campaigns object
+        // Get List of all Campaigns from Firebase and push them to a campaigns object
+        // Get all data for each campaign, such as
+        // Number of Asserted Patents
+        // Number of Patents Subject to IPR
+        // Total cost of the campaign, (add up all the costs of each case)
+
+        // get dummy data for front end testing
         for (const c of this.dummyData) this.campaigns.push(c)
     },
 

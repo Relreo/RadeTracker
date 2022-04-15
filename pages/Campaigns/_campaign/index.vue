@@ -74,7 +74,7 @@ export default {
         dummyData: [
             new Case(
                 'Bluetooth',
-                1,
+                'eb0a882b0231',
                 new Map([
                     ['US9876543', true],
                     ['US9876544', false],
@@ -82,15 +82,29 @@ export default {
                 69.32,
                 new Date(2022, 11, 22, 9, 30)
             ),
-            new Case('Wifi', 1, new Map([['US1234567', false]]), 10.4, new Date(2022, 11, 23, 9, 30)),
-            new Case('Product Activation', 3, new Map([['US5555555', false]]), 123.5, new Date(2022, 11, 24, 9, 30)),
-            new Case('License Keys', 4, new Map([['US9999999', true]]), 100000.69, new Date(2022, 11, 25, 9, 30)),
+            new Case('Wifi', 'eb0a882b0231', new Map([['US1234567', false]]), 10.4, new Date(2022, 11, 23, 9, 30)),
+            new Case(
+                'Product Activation',
+                '89c7fb6999eb',
+                new Map([['US5555555', false]]),
+                123.5,
+                new Date(2022, 11, 24, 9, 30)
+            ),
+            new Case(
+                'License Keys',
+                'ecd48ac43c9c',
+                new Map([['US9999999', true]]),
+                100000.69,
+                new Date(2022, 11, 25, 9, 30)
+            ),
         ],
     }),
 
     fetch() {
         // get list of cases from firebase
         // for each case, if the case's campaign id matches this.$route.params.campaign, add it to the cases list
+
+        // get dummy data for front end testing
         for (const c of this.dummyData) {
             if (c.campaignID.toString() === this.$route.params.campaign) {
                 this.cases.push(c)

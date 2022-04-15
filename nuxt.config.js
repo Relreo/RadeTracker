@@ -38,6 +38,32 @@ export default {
     modules: [
         // https://go.nuxtjs.dev/axios
         '@nuxtjs/axios',
+        [
+            '@nuxtjs/firebase',
+            {
+                config: {
+                    apiKey: 'AIzaSyB5bNEyfzAfweR9ASQu3v4nwLzS-1LEtGk',
+                    authDomain: 'rade-campaign-tracker.firebaseapp.com',
+                    databaseURL: 'https://rade-campaign-tracker-default-rtdb.firebaseio.com',
+                    projectId: 'rade-campaign-tracker',
+                    storageBucket: 'rade-campaign-tracker.appspot.com',
+                    messagingSenderId: '1095266979845',
+                    appId: '1:1095266979845:web:3191a87336cd909b9d8c6c',
+                    measurementId: 'G-H0VFYZZXYE',
+                },
+                services: {
+                    auth: {
+                        persistence: 'local', // default
+                        initialize: {
+                            onAuthStateChangedAction: 'onAuthStateChangedAction',
+                            subscribeManually: false,
+                        },
+                        ssr: false, // default
+                    },
+                    database: true,
+                },
+            },
+        ],
     ],
 
     // Axios module configuration: https://go.nuxtjs.dev/config-axios

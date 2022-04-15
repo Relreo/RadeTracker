@@ -123,6 +123,7 @@ export default {
     }),
 
     fetch() {
+        // Get List of all Campaigns from Firebase and push them to campaigns object
         for (const c of this.dummyData) this.campaigns.push(c)
     },
 
@@ -136,7 +137,9 @@ export default {
         },
         createNewCampaign() {
             // GRAB FORM DATA AND ADD TO THE ARRAY AND EVENTUALLY THE DATABASE
-            if (this.$refs.createForm.validate()) this.valid = true
+            if (this.$refs.createForm.validate()) {
+                this.valid = true
+            }
         },
     },
 }
